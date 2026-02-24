@@ -1,5 +1,5 @@
 ---
-name: DIREGAPIC Updater
+name: DIREGAPIC Preview Updater
 on:  # yamllint disable-line rule:truthy
   schedule:
   - cron: '19 */8 * * *'
