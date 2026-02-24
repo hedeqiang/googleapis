@@ -14,22 +14,22 @@
 
 syntax = "proto3";
 
-package google.cloud.aiplatform.v1beta1;
+package google.cloud.aiplatform.v1;
 
 import "google/api/field_behavior.proto";
 import "google/api/resource.proto";
-import "google/cloud/aiplatform/v1beta1/content.proto";
+import "google/cloud/aiplatform/v1/content.proto";
 import "google/protobuf/duration.proto";
 import "google/protobuf/struct.proto";
 import "google/protobuf/timestamp.proto";
 
-option csharp_namespace = "Google.Cloud.AIPlatform.V1Beta1";
-option go_package = "cloud.google.com/go/aiplatform/apiv1beta1/aiplatformpb;aiplatformpb";
+option csharp_namespace = "Google.Cloud.AIPlatform.V1";
+option go_package = "cloud.google.com/go/aiplatform/apiv1/aiplatformpb;aiplatformpb";
 option java_multiple_files = true;
 option java_outer_classname = "SessionProto";
-option java_package = "com.google.cloud.aiplatform.v1beta1";
-option php_namespace = "Google\\Cloud\\AIPlatform\\V1beta1";
-option ruby_package = "Google::Cloud::AIPlatform::V1beta1";
+option java_package = "com.google.cloud.aiplatform.v1";
+option php_namespace = "Google\\Cloud\\AIPlatform\\V1";
+option ruby_package = "Google::Cloud::AIPlatform::V1";
 
 // A session contains a set of actions between users and Vertex agents.
 message Session {

@@ -14,25 +14,25 @@
 
 syntax = "proto3";
 
-package google.cloud.aiplatform.v1beta1;
+package google.cloud.aiplatform.v1;
 
 import "google/api/annotations.proto";
 import "google/api/client.proto";
 import "google/api/field_behavior.proto";
 import "google/api/resource.proto";
-import "google/cloud/aiplatform/v1beta1/operation.proto";
-import "google/cloud/aiplatform/v1beta1/session.proto";
+import "google/cloud/aiplatform/v1/operation.proto";
+import "google/cloud/aiplatform/v1/session.proto";
 import "google/longrunning/operations.proto";
 import "google/protobuf/empty.proto";
 import "google/protobuf/field_mask.proto";
 
-option csharp_namespace = "Google.Cloud.AIPlatform.V1Beta1";
-option go_package = "cloud.google.com/go/aiplatform/apiv1beta1/aiplatformpb;aiplatformpb";
+option csharp_namespace = "Google.Cloud.AIPlatform.V1";
+option go_package = "cloud.google.com/go/aiplatform/apiv1/aiplatformpb;aiplatformpb";
 option java_multiple_files = true;
 option java_outer_classname = "SessionServiceProto";
-option java_package = "com.google.cloud.aiplatform.v1beta1";
-option php_namespace = "Google\\Cloud\\AIPlatform\\V1beta1";
-option ruby_package = "Google::Cloud::AIPlatform::V1beta1";
+option java_package = "com.google.cloud.aiplatform.v1";
+option php_namespace = "Google\\Cloud\\AIPlatform\\V1";
+option ruby_package = "Google::Cloud::AIPlatform::V1";
 
 // The service that manages Vertex Session related resources.
 service SessionService {
@@ -40,16 +40,12 @@ service SessionService {
   option (google.api.oauth_scopes) =
       "https://www.googleapis.com/auth/cloud-platform";
 
-  // Creates a new [Session][google.cloud.aiplatform.v1beta1.Session].
+  // Creates a new [Session][google.cloud.aiplatform.v1.Session].
   rpc CreateSession(CreateSessionRequest)
       returns (google.longrunning.Operation) {
     option (google.api.http) = {
-      post: "/v1beta1/{parent=projects/*/locations/*/reasoningEngines/*}/sessions"
+      post: "/v1/{parent=projects/*/locations/*/reasoningEngines/*}/sessions"
       body: "session"
-      additional_bindings {
-        post: "/v1beta1/{parent=reasoningEngines/*}/sessions"
-        body: "session"
-      }
     };
     option (google.api.method_signature) = "parent,session";
     option (google.longrunning.operation_info) = {
@@ -58,52 +54,38 @@ service SessionService {
     };
   }
 
-  // Gets details of the specific
-  // [Session][google.cloud.aiplatform.v1beta1.Session].
+  // Gets details of the specific [Session][google.cloud.aiplatform.v1.Session].
   rpc GetSession(GetSessionRequest) returns (Session) {
     option (google.api.http) = {
-      get: "/v1beta1/{name=projects/*/locations/*/reasoningEngines/*/sessions/*}"
-      additional_bindings {
-        get: "/v1beta1/{name=reasoningEngines/*/sessions/*}"
-      }
+      get: "/v1/{name=projects/*/locations/*/reasoningEngines/*/sessions/*}"
     };
     option (google.api.method_signature) = "name";
   }
 
-  // Lists [Sessions][google.cloud.aiplatform.v1beta1.Session] in a given
-  // reasoning engine.
+  // Lists [Sessions][google.cloud.aiplatform.v1.Session] in a given reasoning
+  // engine.
   rpc ListSessions(ListSessionsRequest) returns (ListSessionsResponse) {
     option (google.api.http) = {
-      get: "/v1beta1/{parent=projects/*/locations/*/reasoningEngines/*}/sessions"
-      additional_bindings {
-        get: "/v1beta1/{parent=reasoningEngines/*}/sessions"
-      }
+      get: "/v1/{parent=projects/*/locations/*/reasoningEngines/*}/sessions"
     };
     option (google.api.method_signature) = "parent";
   }
 
-  // Updates the specific [Session][google.cloud.aiplatform.v1beta1.Session].
+  // Updates the specific [Session][google.cloud.aiplatform.v1.Session].
   rpc UpdateSession(UpdateSessionRequest) returns (Session) {
     option (google.api.http) = {
-      patch: "/v1beta1/{session.name=projects/*/locations/*/reasoningEngines/*/sessions/*}"
+      patch: "/v1/{session.name=projects/*/locations/*/reasoningEngines/*/sessions/*}"
       body: "session"
-      additional_bindings {
-        patch: "/v1beta1/{session.name=reasoningEngines/*/sessions/*}"
-        body: "session"
-      }
     };
     option (google.api.method_signature) = "session,update_mask";
   }
 
   // Deletes details of the specific
-  // [Session][google.cloud.aiplatform.v1beta1.Session].
+  // [Session][google.cloud.aiplatform.v1.Session].
   rpc DeleteSession(DeleteSessionRequest)
       returns (google.longrunning.Operation) {
     option (google.api.http) = {
-      delete: "/v1beta1/{name=projects/*/locations/*/reasoningEngines/*/sessions/*}"
-      additional_bindings {
-        delete: "/v1beta1/{name=reasoningEngines/*/sessions/*}"
-      }
+      delete: "/v1/{name=projects/*/locations/*/reasoningEngines/*/sessions/*}"
     };
     option (google.api.method_signature) = "name";
     option (google.longrunning.operation_info) = {
@@ -112,13 +94,10 @@ service SessionService {
     };
   }
 
-  // Lists [Events][google.cloud.aiplatform.v1beta1.Event] in a given session.
+  // Lists [Events][google.cloud.aiplatform.v1.Event] in a given session.
   rpc ListEvents(ListEventsRequest) returns (ListEventsResponse) {
     option (google.api.http) = {
-      get: "/v1beta1/{parent=projects/*/locations/*/reasoningEngines/*/sessions/*}/events"
-      additional_bindings {
-        get: "/v1beta1/{parent=reasoningEngines/*/sessions/*}/events"
-      }
+      get: "/v1/{parent=projects/*/locations/*/reasoningEngines/*/sessions/*}/events"
     };
     option (google.api.method_signature) = "parent";
   }
@@ -126,19 +105,15 @@ service SessionService {
   // Appends an event to a given session.
   rpc AppendEvent(AppendEventRequest) returns (AppendEventResponse) {
     option (google.api.http) = {
-      post: "/v1beta1/{name=projects/*/locations/*/reasoningEngines/*/sessions/*}:appendEvent"
+      post: "/v1/{name=projects/*/locations/*/reasoningEngines/*/sessions/*}:appendEvent"
       body: "event"
-      additional_bindings {
-        post: "/v1beta1/{name=reasoningEngines/*/sessions/*}:appendEvent"
-        body: "event"
-      }
     };
     option (google.api.method_signature) = "name,event";
   }
 }
 
 // Request message for
-// [SessionService.CreateSession][google.cloud.aiplatform.v1beta1.SessionService.CreateSession].
+// [SessionService.CreateSession][google.cloud.aiplatform.v1.SessionService.CreateSession].
 message CreateSessionRequest {
   // Required. The resource name of the location to create the session in.
   // Format:
@@ -155,7 +130,7 @@ message CreateSessionRequest {
 }
 
 // Metadata associated with the
-// [SessionService.CreateSession][google.cloud.aiplatform.v1beta1.SessionService.CreateSession]
+// [SessionService.CreateSession][google.cloud.aiplatform.v1.SessionService.CreateSession]
 // operation.
 message CreateSessionOperationMetadata {
   // The common part of the operation metadata.
@@ -163,7 +138,7 @@ message CreateSessionOperationMetadata {
 }
 
 // Request message for
-// [SessionService.GetSession][google.cloud.aiplatform.v1beta1.SessionService.GetSession].
+// [SessionService.GetSession][google.cloud.aiplatform.v1.SessionService.GetSession].
 message GetSessionRequest {
   // Required. The resource name of the session.
   // Format:
@@ -177,7 +152,7 @@ message GetSessionRequest {
 }
 
 // Request message for
-// [SessionService.ListSessions][google.cloud.aiplatform.v1beta1.SessionService.ListSessions].
+// [SessionService.ListSessions][google.cloud.aiplatform.v1.SessionService.ListSessions].
 message ListSessionsRequest {
   // Required. The resource name of the location to list sessions from.
   // Format:
@@ -195,9 +170,9 @@ message ListSessionsRequest {
   int32 page_size = 2 [(google.api.field_behavior) = OPTIONAL];
 
   // Optional. The
-  // [next_page_token][google.cloud.aiplatform.v1beta1.ListSessionsResponse.next_page_token]
+  // [next_page_token][google.cloud.aiplatform.v1.ListSessionsResponse.next_page_token]
   // value returned from a previous list
-  // [SessionService.ListSessions][google.cloud.aiplatform.v1beta1.SessionService.ListSessions]
+  // [SessionService.ListSessions][google.cloud.aiplatform.v1.SessionService.ListSessions]
   // call.
   string page_token = 3 [(google.api.field_behavior) = OPTIONAL];
 
@@ -220,20 +195,20 @@ message ListSessionsRequest {
 }
 
 // Response message for
-// [SessionService.ListSessions][google.cloud.aiplatform.v1beta1.SessionService.ListSessions].
+// [SessionService.ListSessions][google.cloud.aiplatform.v1.SessionService.ListSessions].
 message ListSessionsResponse {
   // A list of sessions matching the request.
   repeated Session sessions = 1;
 
   // A token, which can be sent as
-  // [ListSessionsRequest.page_token][google.cloud.aiplatform.v1beta1.ListSessionsRequest.page_token]
+  // [ListSessionsRequest.page_token][google.cloud.aiplatform.v1.ListSessionsRequest.page_token]
   // to retrieve the next page. Absence of this field indicates there are no
   // subsequent pages.
   string next_page_token = 2;
 }
 
 // Request message for
-// [SessionService.UpdateSession][google.cloud.aiplatform.v1beta1.SessionService.UpdateSession].
+// [SessionService.UpdateSession][google.cloud.aiplatform.v1.SessionService.UpdateSession].
 message UpdateSessionRequest {
   // Required. The session to update.
   // Format:
@@ -247,7 +222,7 @@ message UpdateSessionRequest {
 }
 
 // Request message for
-// [SessionService.DeleteSession][google.cloud.aiplatform.v1beta1.SessionService.DeleteSession].
+// [SessionService.DeleteSession][google.cloud.aiplatform.v1.SessionService.DeleteSession].
 message DeleteSessionRequest {
   // Required. The resource name of the session.
   // Format:
@@ -261,7 +236,7 @@ message DeleteSessionRequest {
 }
 
 // Request message for
-// [SessionService.ListEvents][google.cloud.aiplatform.v1beta1.SessionService.ListEvents].
+// [SessionService.ListEvents][google.cloud.aiplatform.v1.SessionService.ListEvents].
 message ListEventsRequest {
   // Required. The resource name of the session to list events from.
   // Format:
@@ -279,9 +254,9 @@ message ListEventsRequest {
   int32 page_size = 2 [(google.api.field_behavior) = OPTIONAL];
 
   // Optional. The
-  // [next_page_token][google.cloud.aiplatform.v1beta1.ListEventsResponse.next_page_token]
+  // [next_page_token][google.cloud.aiplatform.v1.ListEventsResponse.next_page_token]
   // value returned from a previous list
-  // [SessionService.ListEvents][google.cloud.aiplatform.v1beta1.SessionService.ListEvents]
+  // [SessionService.ListEvents][google.cloud.aiplatform.v1.SessionService.ListEvents]
   // call.
   string page_token = 3 [(google.api.field_behavior) = OPTIONAL];
 
@@ -302,21 +277,21 @@ message ListEventsRequest {
 }
 
 // Response message for
-// [SessionService.ListEvents][google.cloud.aiplatform.v1beta1.SessionService.ListEvents].
+// [SessionService.ListEvents][google.cloud.aiplatform.v1.SessionService.ListEvents].
 message ListEventsResponse {
   // A list of events matching the request. Ordered by timestamp in ascending
   // order.
   repeated SessionEvent session_events = 1;
 
   // A token, which can be sent as
-  // [ListEventsRequest.page_token][google.cloud.aiplatform.v1beta1.ListEventsRequest.page_token]
+  // [ListEventsRequest.page_token][google.cloud.aiplatform.v1.ListEventsRequest.page_token]
   // to retrieve the next page. Absence of this field indicates there are no
   // subsequent pages.
   string next_page_token = 2;
 }
 
 // Request message for
-// [SessionService.AppendEvent][google.cloud.aiplatform.v1beta1.SessionService.AppendEvent].
+// [SessionService.AppendEvent][google.cloud.aiplatform.v1.SessionService.AppendEvent].
 message AppendEventRequest {
   // Required. The resource name of the session to append event to.
   // Format:
@@ -333,5 +308,5 @@ message AppendEventRequest {
 }
 
 // Response message for
-// [SessionService.AppendEvent][google.cloud.aiplatform.v1beta1.SessionService.AppendEvent].
+// [SessionService.AppendEvent][google.cloud.aiplatform.v1.SessionService.AppendEvent].
 message AppendEventResponse {}
