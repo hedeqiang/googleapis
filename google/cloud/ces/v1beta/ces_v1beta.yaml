@@ -112,4 +112,39 @@ publishing:
   github_label: 'api: ces'
   doc_tag_prefix: ces
   organization: CLOUD
+  library_settings:
+  - version: google.cloud.ces.v1beta
+    launch_stage: BETA
+    java_settings:
+      common:
+        destinations:
+        - PACKAGE_MANAGER
+    cpp_settings:
+      common:
+        destinations:
+        - PACKAGE_MANAGER
+    php_settings:
+      common:
+        destinations:
+        - PACKAGE_MANAGER
+    python_settings:
+      common:
+        destinations:
+        - PACKAGE_MANAGER
+    node_settings:
+      common:
+        destinations:
+        - PACKAGE_MANAGER
+    dotnet_settings:
+      common:
+        destinations:
+        - PACKAGE_MANAGER
+    ruby_settings:
+      common:
+        destinations:
+        - PACKAGE_MANAGER
+    go_settings:
+      common:
+        destinations:
+        - PACKAGE_MANAGER
   proto_reference_documentation_uri: https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rpc
