@@ -19,42 +19,38 @@ package google.ads.googleads.v23.enums;
 option csharp_namespace = "Google.Ads.GoogleAds.V23.Enums";
 option go_package = "google.golang.org/genproto/googleapis/ads/googleads/v23/enums;enums";
 option java_multiple_files = true;
-option java_outer_classname = "SearchTermMatchSourceProto";
+option java_outer_classname = "BookingStatusProto";
 option java_package = "com.google.ads.googleads.v23.enums";
 option objc_class_prefix = "GAA";
 option php_namespace = "Google\\Ads\\GoogleAds\\V23\\Enums";
 option ruby_package = "Google::Ads::GoogleAds::V23::Enums";
 
-// Proto file describing search term match source.
+// Proto file describing booking status.
 
-// Container for enum describing the source for search term matches in the
-// search term report.
-message SearchTermMatchSourceEnum {
-  // The search term match sources.
-  enum SearchTermMatchSource {
+// Container for enum with booking status.
+message BookingStatusEnum {
+  // Booking status.
+  enum BookingStatus {
     // Not specified.
     UNSPECIFIED = 0;
 
     // Used for return value only. Represents value unknown in this version.
     UNKNOWN = 1;
 
-    // The match is from a user-provided keyword.
-    ADVERTISER_PROVIDED_KEYWORD = 2;
+    // The booking is active and holds inventory for the campaign.
+    BOOKED = 2;
 
-    // The match is from the keywordless expansion portion of AI Max.
-    AI_MAX_KEYWORDLESS = 3;
+    // The campaign is holding inventory, but the booking is not confirmed.
+    HELD = 3;
 
-    // The match is from the broad match expansion portion of AI Max.
-    AI_MAX_BROAD_MATCH = 4;
+    // The campaign has ended and is no longer holding inventory.
+    CAMPAIGN_ENDED = 4;
 
-    // The match is from a Dynamic Search Ad.
-    DYNAMIC_SEARCH_ADS = 5;
+    // The hold on the inventory has expired.
+    HOLD_EXPIRED = 5;
 
-    // The match is from the search term matching functionality in PMax.
-    PERFORMANCE_MAX = 6;
-
-    // The match is from a vertical ads data feed (e.g. Travel Ads entity
-    // targeting).
-    VERTICAL_ADS_DATA_FEED = 7;
+    // The campaign was booked, but was in a non-servable state for too long and
+    // the booking was cancelled by the system.
+    BOOKING_CANCELLED = 6;
   }
 }
